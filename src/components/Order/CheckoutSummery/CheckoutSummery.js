@@ -6,17 +6,17 @@ import classes from './CheckoutSummery.css';
 
 const checkoutSummmery = (props) => {
     return(
-        <div className={classes.CheckoutSummmery}>
-            <h1>we Hope it tastes well!</h1>
+        <div className={classes.CheckoutSummmery} className= {classes.buttonTag}>
+            <h1 className= {classes.checkoutSummeryTag}>we Hope it tastes well!</h1>
             <div styel={{width:'100%', height:'300px', margin:'auto'}}>
             <Burger ingredients={props.ingredients}/> 
             </div>
-            <Button 
+            <Button
             btnType="Danger"
-            clicked>CANCEL</Button>
-            <Button 
-            btnType="Danger"
-            clicked>CONTINUE</Button>
+            clicked={props.checkoutCancelled}>CANCEL</Button>
+            <Button
+            btnType="Success"
+            clicked={props.checkoutContinued}>CONTINUE</Button>
         </div>
     )
 }
