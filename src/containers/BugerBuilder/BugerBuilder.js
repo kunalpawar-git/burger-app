@@ -18,7 +18,6 @@ class BugerBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        purchasable: false,
         purchasing: false,
         loading: false,
         error:false
@@ -42,7 +41,7 @@ class BugerBuilder extends Component {
             .reduce((sum,el) => {
                 return sum + el;
             },0);
-            this.setState({purchasable:sum > 0});
+            return sum > 0;
     }; 
 
     purchaseHandler = () => {
@@ -54,24 +53,9 @@ class BugerBuilder extends Component {
         this.setState({purchasing: false});
     }
 
-    // purchaseContinuHandler = () => {
-    //     console.log('withErrorHandler');
-    //     alert('You continue!'); 
-       
-    //     const queryParams = [];
-    //     console.log('state', this.state.ingredients);
-    //     for(let i in this.props.ings) {
-    //       queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
-    //     }
-    //     queryParams.push('price=' + this.state.totalPrice);
-    //     const queryString = queryParams.join('&');
-    //     this.props.history.push({
-    //         pathname:'/checkout',
-    //         search: '?' + queryString
-    //     });
-    //     console.log('this.props.history.push', this.props.history);
-    //    this.props.history.push('/checkout');
-    // }
+    purchaseContinuHandler = () => {
+        this.props.history.push("/checkout");
+    }
 
 
     render(){
@@ -92,7 +76,7 @@ class BugerBuilder extends Component {
                     ingredientAdded={this.props.onIngredientAdded}
                     ingredientRemoved={this.props.onIngredientRemoved}
                     disabled={disableInfo}
-                    purchasable={this.state.purchasable}
+                    purchasable={this.updatePurchaseState(this.props.ings)}
                     ordered={this.purchaseHandler}
                     price={this.props.price}/> 
             </Aux>
