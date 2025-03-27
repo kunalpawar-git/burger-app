@@ -32,5 +32,5 @@ jobs:
         run: npm install -g vercel
 
       - name: Deploy to Vercel
-        run: vercel --prod --token ${{ secrets.burger_appp }}
+        run: vercel --prod --yes --token ${{ secrets.burger_appp }}
 
