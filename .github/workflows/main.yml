@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Checkout Repository
-      #   uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -23,13 +23,14 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: |
-          npm install
+        run: npm install
 
       - name: Build Project
-        run: |
-          npm run build
+        run: npm run build
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
 
       - name: Deploy to Vercel
-        run: |
-          vercel --prod --token ${{egTC2RbvPrGF155K1Y5389Uq}}
+        run: vercel --prod --token ${{ secrets.egTC2RbvPrGF155K1Y5389Uq }}
+
