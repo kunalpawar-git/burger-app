@@ -32,4 +32,4 @@ jobs:
 
       - name: Deploy to Vercel
         run: |
-          vercel --prod --token ${{ egTC2RbvPrGF155K1Y5389Uq }}
+          vercel --prod --token ${{egTC2RbvPrGF155K1Y5389Uq}}
